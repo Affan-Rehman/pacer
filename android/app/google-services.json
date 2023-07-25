@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "755883173407",
+    "project_id": "pacer-a63c7",
+    "storage_bucket": "pacer-a63c7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:755883173407:android:7b5ae4f6860dff4be4d72a",
+        "android_client_info": {
+          "package_name": "com.example.pacer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "755883173407-j6qh6k63urpkqgl7ehpcalp64gn6rm0t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJH4B3tuo6VXqu5BOM0bnoET_dNphe7fA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "755883173407-j6qh6k63urpkqgl7ehpcalp64gn6rm0t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
