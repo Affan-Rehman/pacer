@@ -1,0 +1,76 @@
+name: pacer
+description: A new Flutter project.
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: '>=3.0.5 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  geocoding: ^2.1.0
+  geolocator: ^9.0.2
+  google_maps_flutter: ^2.3.1
+  app_settings: ^4.2.0
+  animated_snack_bar: ^0.3.1
+  flutter_staggered_animations: ^1.1.1
+  flutter_vector_icons: ^2.0.0
+  shared_preferences: ^2.1.2
+  url_launcher: ^6.1.11
+  share_plus: ^7.0.2
+  flutter_compass: ^0.7.0
+  alxgration_speedometer: ^0.0.2
+  permission_handler: ^10.4.0
+  http: any
+  cloud_firestore: any
+  firebase_core: any
+  provider: ^6.0.5
+  flutter_material_pickers: ^3.5.0
+  uuid: ^3.0.7
+  pedometer: ^4.0.1
+  geodesy: ^0.6.0
+  hive: ^2.2.3
+  path_provider: ^2.0.15
+  connectivity_plus: ^4.0.1
+  percent_indicator: ^4.2.3
+  syncfusion_flutter_charts: ^22.1.37
+  blurrycontainer: ^1.0.2
+  flutter_background_service: ^3.0.1
+  flutter_background_service_android: ^4.0.1
+  flutter_polyline_points: ^1.0.0
+  ionicons: ^0.2.2
+  firebase_auth: any
+  google_sign_in: ^6.1.4
+  firebase_messaging: any
+  sign_in_with_apple: ^5.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+  fonts:
+    - family: RobotoRound
+      fonts:
+        - asset: assets/font/roboto_round.ttf
+    - family: Weather
+      fonts:
+        - asset: assets/font/weather.ttf
+
+  assets:
+    - assets/drawable/splash_bg.png
+    - assets/drawable/uk.png
+    - assets/drawable/france.png
+    - assets/drawable/saudia.png
+    - assets/drawable/spain.png
+    - assets/drawable/portugal.png
+    - assets/drawable/german.png
+    - assets/drawable/india.png
+    - assets/drawable/home_bg.png
+    - assets/drawable/compass.png
+    - assets/drawable/ic_terrain.png
+    - assets/drawable/ic_satellite.png
+    - assets/drawable/ic_default.png
