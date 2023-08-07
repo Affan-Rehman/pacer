@@ -1,5 +1,10 @@
 # 🏃‍♂️ Pacer: Your Comprehensive Fitness Companion
 
+
+https://github.com/Affan-Rehman/pacer/assets/112381046/b595308c-558e-4ab6-909f-6171602c23aa
+
+
+
 ## Introduction
 
 Pacer is not just your ordinary step-tracking app—it's a comprehensive fitness companion designed to transform your daily routine into a vibrant and rewarding experience. With its delightful interface and an array of powerful features, Pacer is here to make every step count on your wellness journey. 💪🌟
