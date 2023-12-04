@@ -1,6 +1,6 @@
 # 🏃‍♂️ Pacer: Your Comprehensive Fitness Companion
 
-[Pacer-Pedometer](https://play.google.com/store/apps/details?id=charisma.motiondetectorpedometer.steptrackercounter&hl=en&gl=US)
+[Pacer-Pedometer on google play](https://play.google.com/store/apps/details?id=charisma.motiondetectorpedometer.steptrackercounter&hl=en&gl=US)
 
 
 https://github.com/Affan-Rehman/pacer/assets/112381046/b595308c-558e-4ab6-909f-6171602c23aa
