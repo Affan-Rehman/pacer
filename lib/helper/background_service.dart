@@ -4,7 +4,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_background_service/flutter_background_service.dart';
 import 'package:flutter_background_service_android/flutter_background_service_android.dart';
-import 'package:pacer/helper/stepcalculator.dart';
 
 Future<void> initializeService(bool isbackground) async {
   final service = FlutterBackgroundService();
@@ -49,6 +48,6 @@ void onStart(ServiceInstance service) async {
   debugPrint('Background Service Started');
 
   // Start the StepCalculator and keep it running
-  StepCalculator mainClass = StepCalculator();
-  mainClass.start();
+  // StepCalculator mainClass = StepCalculator();
+  // mainClass.start();
 }

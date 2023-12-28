@@ -283,6 +283,7 @@ class _MainScreenState extends State<MainScreen>
   @override
   void dispose() {
     _tabController.removeListener(_handleTabSelection);
+
     _tabController.dispose();
     super.dispose();
   }

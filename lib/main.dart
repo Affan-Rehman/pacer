@@ -11,11 +11,13 @@ import 'package:pacer/helper/classes.dart';
 import 'package:pacer/screens.dart/homescreen.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
 
-import 'helper/background_service.dart';
+import 'firebase_options.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   // Get the application documents directory for storing Hive data
   final appDocumentDir = await path_provider.getApplicationDocumentsDirectory();
   Hive.init(appDocumentDir.path);
@@ -37,8 +39,7 @@ Future<void> main() async {
   await Hive.openBox<Weekly>('weeklyList');
   await Hive.openBox<Daily>('dailyList');
   await Hive.openBox<Polyline>('polylines');
-
-  initializeService(true);
+  // initializeService(true);
 
   runApp(const MainApp());
 }

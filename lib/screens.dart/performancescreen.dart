@@ -2,16 +2,19 @@
 import 'dart:async';
 import 'dart:developer';
 import 'dart:io';
+import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import "package:intl/intl.dart";
 import 'package:app_settings/app_settings.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:hive/hive.dart';
+import 'package:pacer/screens.dart/wateractivity.dart';
 import 'package:pedometer/pedometer.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
 import '../constants.dart';
 import '../helper/classes.dart';
+import '../helper/widgets.dart';
 import 'homescreen.dart';
 
 class PerformanceScreen extends StatefulWidget {
@@ -37,6 +40,8 @@ class _PerformanceScreenState extends State<PerformanceScreen> {
   );
   Map<String, Map<String, String>> translatedStrings = AppStrings.translations;
   var distance = 0.0;
+  var requirement = 0;
+
   var steps = 0;
   bool isLocationEnabled = false;
   var kcal = 0.0;
@@ -435,7 +440,7 @@ class _PerformanceScreenState extends State<PerformanceScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.all(10.0),
+                      padding: const EdgeInsets.all(5.0),
                       child: Column(
                         children: [
                           Text(
@@ -454,7 +459,7 @@ class _PerformanceScreenState extends State<PerformanceScreen> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(10.0),
+                      padding: const EdgeInsets.all(5.0),
                       child: Column(
                         children: [
                           Text(
@@ -475,7 +480,7 @@ class _PerformanceScreenState extends State<PerformanceScreen> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(10.0),
+                      padding: const EdgeInsets.all(5.0),
                       child: Column(
                         children: [
                           Text(
@@ -493,6 +498,38 @@ class _PerformanceScreenState extends State<PerformanceScreen> {
                         ],
                       ),
                     ),
+                    Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => WaterActivity(),
+                            ),
+                          );
+                        },
+                        child: BlinkingWidget(
+                          isBelowRequirement: water < requirement,
+                          child: Column(
+                            children: [
+                              Icon(
+                                MaterialIcons.radio_button_checked,
+                                color: Colors.white,
+                                size: 17,
+                              ),
+                              Text(
+                                translatedStrings[widget.currentLanguage]![
+                                        "water"] ??
+                                    AppStrings.water,
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 15),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -501,6 +538,18 @@ class _PerformanceScreenState extends State<PerformanceScreen> {
         ),
       ),
     );
+  }
+
+  int calculateWaterRequirement(double calories) {
+    return (kcal * 0.01).toInt();
+  }
+
+  void updateCalories(double newCalories) {
+    kcal = newCalories;
+    // Update the 'requirement' variable based on the new calorie value.
+    requirement = calculateWaterRequirement(kcal);
+    // You can also update 'water' here if needed.
+    // water = ...
   }
 
   Future<void> loadData() async {
@@ -657,6 +706,7 @@ class _PerformanceScreenState extends State<PerformanceScreen> {
       distance = (steps * 0.762) / 1000;
       distance = double.parse(distance.toStringAsFixed(1));
       kcal = double.parse((steps * 0.04).toStringAsFixed(1));
+      requirement = (kcal * 0.01).toInt();
       percentage = (steps / goal) * 100;
       if (percentage > 100) {
         percentage = 100;

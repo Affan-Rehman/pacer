@@ -1,6 +1,7 @@
 // ignore_for_file: unused_field, library_private_types_in_public_api, avoid_print, unused_element, prefer_const_constructors, sized_box_for_whitespace, use_build_context_synchronously, no_leading_underscores_for_local_identifiers
 
 import 'dart:async';
+import 'dart:io';
 
 import 'package:app_settings/app_settings.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -28,6 +29,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   // Initiate global variables at the class level
+  bool permission = false;
   bool trackingActive =
       false; // to keep track whether tracking is active or not
   String? walkStartTime, walkFinishTime;
@@ -45,8 +47,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final bool isArabic = currentLanguage == 'ar';
-
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
@@ -58,9 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
               height: MediaQuery.of(context).size.height,
               fit: BoxFit.cover,
             ),
-            isArabic
-                ? SingleChildScrollView(child: buildLayout())
-                : buildLayout(),
+            buildLayout()
           ],
         ),
       ),
@@ -146,151 +144,163 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget buildLayout() {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: AnimationConfiguration.toStaggeredList(
-        duration: const Duration(milliseconds: 375),
-        childAnimationBuilder: (widget) => SlideAnimation(
-          horizontalOffset: 50.0,
-          child: FadeInAnimation(
-            child: widget,
-          ),
-        ),
-        children: [
-          const SizedBox(
-            height: 15,
-          ),
-          Container(
-            width: MediaQuery.of(context).size.width,
-            color: const Color.fromARGB(255, 24, 66, 107),
-            padding: const EdgeInsets.symmetric(vertical: 16),
-            child: Column(
-              children: [
-                Text(
-                  translatedStrings[currentLanguage]!['appName'] ??
-                      AppStrings.appName,
-                  style: const TextStyle(
-                    fontSize: 38,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                    fontFamily: 'Weather',
-                  ),
-                ),
-                Text(
-                  translatedStrings[currentLanguage]!['slogan'] ??
-                      AppStrings.slogan,
-                  style: const TextStyle(
-                    fontSize: 20,
-                    fontFamily: 'Weather',
-                    color: Colors.white,
-                  ),
-                ),
-              ],
+    return SingleChildScrollView(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: AnimationConfiguration.toStaggeredList(
+          duration: const Duration(milliseconds: 375),
+          childAnimationBuilder: (widget) => SlideAnimation(
+            horizontalOffset: 50.0,
+            child: FadeInAnimation(
+              child: widget,
             ),
           ),
-          SizedBox(
-            height: 7,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Column(
+          children: [
+            const SizedBox(
+              height: 15,
+            ),
+            Container(
+              width: MediaQuery.of(context).size.width,
+              color: const Color.fromARGB(255, 24, 66, 107),
+              padding: const EdgeInsets.symmetric(vertical: 16),
+              child: Column(
                 children: [
-                  IconButton(
-                    onPressed: () {
-                      showDialog(
-                        context: context,
-                        builder: (context) =>
-                            AnimationConfiguration.synchronized(
-                          duration: const Duration(milliseconds: 300),
-                          child: FadeInAnimation(
-                            child: DialogLanguages(
-                              onLanguageSelected: setLanguage,
-                              currentLanguage: currentLanguage,
-                            ),
-                          ),
-                        ),
-                      );
-                    },
-                    icon: const Icon(Icons.language),
-                    color: AppColors.colorAccent,
-                    iconSize: 32,
-                    padding: EdgeInsets.zero,
-                    constraints: const BoxConstraints(),
-                  ),
-                  const SizedBox(height: 8),
-                  const Text(
-                    AppStrings.language,
-                    style: TextStyle(
+                  Text(
+                    translatedStrings[currentLanguage]!['appName'] ??
+                        AppStrings.appName,
+                    style: const TextStyle(
+                      fontSize: 38,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
                       fontFamily: 'Weather',
-                      color: AppColors.colorAccent,
-                      fontSize: 18,
+                    ),
+                  ),
+                  Text(
+                    translatedStrings[currentLanguage]!['slogan'] ??
+                        AppStrings.slogan,
+                    style: const TextStyle(
+                      fontSize: 20,
+                      fontFamily: 'Weather',
+                      color: Colors.white,
                     ),
                   ),
                 ],
               ),
-              const SizedBox(width: 16),
-            ],
-          ),
-          SizedBox(height: MediaQuery.of(context).size.height * 0.56),
-          Container(
-            width: 200,
-            height: 50,
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                padding: EdgeInsets.zero,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                elevation: 4,
-              ),
-              onPressed: () async {
-                bool isGranted = await _checkPermissions();
-                if (isGranted) {
-                  _navigateToNextScreen();
-                } else {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text('Location permission required'),
-                      action: SnackBarAction(
-                          label: translatedStrings[currentLanguage]![
-                                  'GOTOSETTINGS'] ??
-                              AppStrings.goToSettings,
-                          onPressed: openAppSettings),
+            ),
+            SizedBox(
+              height: 7,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Column(
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        showDialog(
+                          context: context,
+                          builder: (context) =>
+                              AnimationConfiguration.synchronized(
+                            duration: const Duration(milliseconds: 300),
+                            child: FadeInAnimation(
+                              child: DialogLanguages(
+                                onLanguageSelected: setLanguage,
+                                currentLanguage: currentLanguage,
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                      icon: const Icon(Icons.language),
+                      color: AppColors.colorAccent,
+                      iconSize: 32,
+                      padding: EdgeInsets.zero,
+                      constraints: const BoxConstraints(),
                     ),
-                  );
-                  await _checkPermissions();
-                }
-              },
-              child: Ink(
-                decoration: BoxDecoration(
-                  color: AppColors.colorAccent,
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: Center(
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(
-                        translatedStrings[currentLanguage]!['letsgo'] ??
-                            AppStrings.letsgo,
-                        style: const TextStyle(
-                          fontFamily: 'Weather',
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
+                    const SizedBox(height: 8),
+                    const Text(
+                      AppStrings.language,
+                      style: TextStyle(
+                        fontFamily: 'Weather',
+                        color: AppColors.colorAccent,
+                        fontSize: 18,
                       ),
-                      const SizedBox(width: 4),
-                      const Icon(Icons.arrow_forward),
-                    ],
+                    ),
+                  ],
+                ),
+                const SizedBox(width: 16),
+              ],
+            ),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.56),
+            Container(
+              width: 200,
+              height: 50,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  padding: EdgeInsets.zero,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  elevation: 4,
+                ),
+                onPressed: () async {
+                  bool isGranted = await _checkPermissions();
+                  if (Platform.isIOS) {
+                    permission = true;
+                  }
+                  if (isGranted && permission) {
+                    _navigateToNextScreen();
+                  } else {
+                    if (!isGranted) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text('Location permission required'),
+                          action: SnackBarAction(
+                              label: translatedStrings[currentLanguage]![
+                                      'GOTOSETTINGS'] ??
+                                  AppStrings.goToSettings,
+                              onPressed: openAppSettings),
+                        ),
+                      );
+                      await _checkPermissions();
+                    }
+                    if (!permission) {
+                      if (Platform.isAndroid) {
+                        permissionSteps();
+                      }
+                    }
+                  }
+                },
+                child: Ink(
+                  decoration: BoxDecoration(
+                    color: AppColors.colorAccent,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Center(
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          translatedStrings[currentLanguage]!['letsgo'] ??
+                              AppStrings.letsgo,
+                          style: const TextStyle(
+                            fontFamily: 'Weather',
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const SizedBox(width: 4),
+                        const Icon(Icons.arrow_forward),
+                      ],
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-          const SizedBox(height: 20),
-        ],
+            const SizedBox(height: 20),
+          ],
+        ),
       ),
     );
   }
@@ -322,12 +332,31 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  Future<void> permissionSteps() async {
+    permission = await Permission.activityRecognition.request().isGranted;
+    if (permission) {
+      permission = true;
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Please enable location services'),
+          action: SnackBarAction(
+              label: translatedStrings[currentLanguage]!['GOTOSETTINGS'] ??
+                  AppStrings.goToSettings,
+              onPressed: openAppSettings),
+        ),
+      );
+    }
+    if (!mounted) return;
+  }
+
   Future<bool> _checkPermissions() async {
     bool permissionallowed = false;
     bool _serviceEnabled;
     LocationPermission _permission;
 
     _serviceEnabled = await Geolocator.isLocationServiceEnabled();
+
     if (!_serviceEnabled) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
@@ -378,43 +407,42 @@ class _HomeScreenState extends State<HomeScreen> {
     return permissionallowed;
   }
 
-void _navigateToNextScreen() {
-  if (FirebaseAuth.instance.currentUser == null) {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      showDialog(
-        barrierDismissible: true,
-        context: context,
-        builder: (BuildContext context) {
-          return NoLoginDialog(onPressed: showLoginDialog);
-        },
+  void _navigateToNextScreen() {
+    if (FirebaseAuth.instance.currentUser == null) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        showDialog(
+          barrierDismissible: true,
+          context: context,
+          builder: (BuildContext context) {
+            return NoLoginDialog(onPressed: showLoginDialog);
+          },
+        );
+      });
+    } else {
+      Navigator.push(
+        context,
+        PageRouteBuilder(
+          transitionDuration: const Duration(milliseconds: 300),
+          pageBuilder: (context, animation, secondaryAnimation) {
+            return FadeTransition(
+              opacity: animation,
+              child: MainScreen(currentLanguage),
+            );
+          },
+        ),
       );
-    });
-  } else {
-    Navigator.push(
-      context,
-      PageRouteBuilder(
-        transitionDuration: const Duration(milliseconds: 300),
-        pageBuilder: (context, animation, secondaryAnimation) {
-          return FadeTransition(
-            opacity: animation,
-            child: MainScreen(currentLanguage),
-          );
-        },
-      ),
+    }
+  }
+
+  void showLoginDialog() {
+    showDialog(
+      barrierDismissible: true,
+      context: context,
+      builder: (BuildContext context) {
+        return LoginDialog();
+      },
     );
   }
-}
-
-void showLoginDialog() {
-  showDialog(
-    barrierDismissible: true,
-    context: context,
-    builder: (BuildContext context) {
-      return LoginDialog();
-    },
-  );
-}
-
 }
 
 class SplashScreen extends StatelessWidget {
