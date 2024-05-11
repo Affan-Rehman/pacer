@@ -48,11 +48,6 @@ class AppColors {
 
 class AppStrings {
   static const String water = "water";
-  String googleMapsApi = dotenv.get('GOOGLE_MAPS_API');
-  String openWeatherMapsAppId = dotenv.get('OPEN_WEATHER_MAPS_APP_ID');
-  String appLink = dotenv.get('APP_LINK');
-  String admobAppId = dotenv.get('ADMOB_APP_ID');
-  String openWeatherMapsApi = dotenv.get('OPEN_WEATHER_MAPS_API');
   static const String appName = "Pacer";
   static const String appNamePacerBelowIcon = "Pacer";
 

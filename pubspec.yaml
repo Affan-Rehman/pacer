@@ -1,10 +1,10 @@
 name: pacer
 description: A new Flutter project.
-publish_to: 'none'
+publish_to: "none"
 version: 0.1.0
 
 environment:
-  sdk: '>=3.0.5 <4.0.0'
+  sdk: ">=3.0.5 <4.0.0"
 
 dependencies:
   flutter:
@@ -65,16 +65,5 @@ flutter:
         - asset: assets/font/weather.ttf
 
   assets:
-    - assets/drawable/splash_bg.png
-    - assets/drawable/uk.png
-    - assets/drawable/france.png
-    - assets/drawable/saudia.png
-    - assets/drawable/spain.png
-    - assets/drawable/portugal.png
-    - assets/drawable/german.png
-    - assets/drawable/india.png
-    - assets/drawable/home_bg.png
-    - assets/drawable/compass.png
-    - assets/drawable/ic_terrain.png
-    - assets/drawable/ic_satellite.png
-    - assets/drawable/ic_default.png
+    - assets/drawable/
+    - .env
