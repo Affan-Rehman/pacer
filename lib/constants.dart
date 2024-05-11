@@ -1,7 +1,6 @@
 // ignore_for_file: use_full_hex_values_for_flutter_colors, constant_identifier_names
 
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class AppColors {
   static const Color colorPrimary = Color(0xFF163B5F);
