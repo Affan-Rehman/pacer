@@ -1,15 +1,15 @@
 # This is a generated file; do not edit or check into version control.
 app_settings=/Users/affanrehman/.pub-cache/hosted/pub.dev/app_settings-4.3.1/
-cloud_firestore=/Users/affanrehman/.pub-cache/hosted/pub.dev/cloud_firestore-4.13.1/
-cloud_firestore_web=/Users/affanrehman/.pub-cache/hosted/pub.dev/cloud_firestore_web-3.8.5/
+cloud_firestore=/Users/affanrehman/.pub-cache/hosted/pub.dev/cloud_firestore-4.9.3/
+cloud_firestore_web=/Users/affanrehman/.pub-cache/hosted/pub.dev/cloud_firestore_web-3.7.2/
 connectivity_plus=/Users/affanrehman/.pub-cache/hosted/pub.dev/connectivity_plus-4.0.2/
 file_picker=/Users/affanrehman/.pub-cache/hosted/pub.dev/file_picker-5.5.0/
-firebase_auth=/Users/affanrehman/.pub-cache/hosted/pub.dev/firebase_auth-4.14.0/
-firebase_auth_web=/Users/affanrehman/.pub-cache/hosted/pub.dev/firebase_auth_web-5.8.7/
-firebase_core=/Users/affanrehman/.pub-cache/hosted/pub.dev/firebase_core-2.22.0/
-firebase_core_web=/Users/affanrehman/.pub-cache/hosted/pub.dev/firebase_core_web-2.8.1/
-firebase_messaging=/Users/affanrehman/.pub-cache/hosted/pub.dev/firebase_messaging-14.7.4/
-firebase_messaging_web=/Users/affanrehman/.pub-cache/hosted/pub.dev/firebase_messaging_web-3.5.13/
+firebase_auth=/Users/affanrehman/.pub-cache/hosted/pub.dev/firebase_auth-4.10.1/
+firebase_auth_web=/Users/affanrehman/.pub-cache/hosted/pub.dev/firebase_auth_web-5.8.2/
+firebase_core=/Users/affanrehman/.pub-cache/hosted/pub.dev/firebase_core-2.17.0/
+firebase_core_web=/Users/affanrehman/.pub-cache/hosted/pub.dev/firebase_core_web-2.8.0/
+firebase_messaging=/Users/affanrehman/.pub-cache/hosted/pub.dev/firebase_messaging-14.6.9/
+firebase_messaging_web=/Users/affanrehman/.pub-cache/hosted/pub.dev/firebase_messaging_web-3.5.8/
 flutter_background_service=/Users/affanrehman/.pub-cache/hosted/pub.dev/flutter_background_service-3.0.2/
 flutter_background_service_android=/Users/affanrehman/.pub-cache/hosted/pub.dev/flutter_background_service_android-4.0.2/
 flutter_background_service_ios=/Users/affanrehman/.pub-cache/hosted/pub.dev/flutter_background_service_ios-3.0.0/
