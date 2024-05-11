@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors, sort_child_properties_last
 
 import 'package:flutter/material.dart';
-import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:pacer/constants.dart';
+import 'package:pacer/widgets/drawable_glass.dart';
 
 class WaterActivity extends StatefulWidget {
   @override
@@ -35,8 +35,7 @@ class _WaterActivityState extends State<WaterActivity> {
               icon: Icon(Icons.arrow_back),
               onPressed: () {
                 Navigator.pop(context);
-                ScaffoldMessenger.of(context)
-            .clearSnackBars();
+                ScaffoldMessenger.of(context).clearSnackBars();
               },
             ),
             backgroundColor: Colors.transparent,
@@ -101,42 +100,6 @@ class _WaterActivityState extends State<WaterActivity> {
           ),
         ),
       ),
-    );
-  }
-}
-
-class DraggableGlass extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Draggable(
-      data:
-          'glass', // Data to send when the draggable is accepted by the target.
-      child: Icon(
-        MaterialCommunityIcons
-            .glass_pint_outline, // You can replace this with any appropriate glass icon.
-        color: Colors.blue,
-        size: 40,
-      ),
-      feedback: Icon(
-        MaterialCommunityIcons.glass_pint_outline,
-        color: Colors.blue.withOpacity(0.7),
-        size: 40,
-      ),
-      childWhenDragging: Icon(
-        MaterialCommunityIcons.glass_pint_outline,
-        color: Colors.grey,
-        size: 40,
-      ),
-      onDragEnd: (details) {
-        ScaffoldMessenger.of(context)
-            .clearSnackBars();
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Water drank!'),
-            duration: Duration(seconds: 2),
-          ),
-        );
-      },
     );
   }
 }
