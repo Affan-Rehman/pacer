@@ -15,7 +15,6 @@ import 'package:percent_indicator/circular_percent_indicator.dart';
 
 import '../constants.dart';
 import '../helper/classes.dart';
-import '../widgets/compass.dart';
 import 'homescreen.dart';
 
 class PerformanceScreen extends StatefulWidget {

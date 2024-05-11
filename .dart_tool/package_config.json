@@ -326,6 +326,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "flutter_dotenv",
+      "rootUri": "file:///Users/affanrehman/.pub-cache/hosted/pub.dev/flutter_dotenv-5.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "flutter_lints",
       "rootUri": "file:///Users/affanrehman/.pub-cache/hosted/pub.dev/flutter_lints-2.0.3",
       "packageUri": "lib/",
@@ -1052,7 +1058,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2024-05-11T19:38:44.063237Z",
+  "generated": "2024-05-11T19:43:21.056456Z",
   "generator": "pub",
   "generatorVersion": "3.4.0-282.1.beta",
   "flutterRoot": "file:///Users/affanrehman/Software/flutter",

@@ -1,0 +1,87 @@
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.buildlog/
+.history
+.svn/
+
+# Flutter/Dart/Pub related
+**/doc/api/
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+/build/
+
+# Android related
+**/android/**/*.gradle
+**/android/.gradle
+**/android/captures/
+**/android/gradlew
+**/android/gradlew.bat
+**/android/local.properties
+**/android/**/GeneratedPluginRegistrant.*
+**/android/**/*.keystore
+**/android/**/*.jks
+
+# iOS/Framework related
+**/ios/**/*.generated.xcconfig
+**/ios/**/*.xcworkspace
+**/ios/**/*.xcodeproj
+**/ios/**/*.xcuserstate
+**/ios/**/*.xcscmblueprint
+**/ios/**/*.pbxuser
+**/ios/**/*.mode1v3
+**/ios/**/*.mode2v3
+**/ios/**/*.moved-aside
+**/ios/**/*.pbxuser
+**/ios/**/*.perspectivev3
+**/ios/**/*sync/
+**/ios/**/.sync/
+**/ios/**/sconsign.dblite
+**/ios/**/derivedData/
+**/ios/**/Trailers/
+
+# macOS related
+**/macos/Flutter/ephemeral/
+**/macos/Flutter/GeneratedPluginRegistrant.*
+
+# Linux related
+**/linux/Flutter/ephemeral/
+**/linux/Flutter/GeneratedPluginRegistrant.*
+
+# Windows related
+**/windows/Flutter/ephemeral/
+**/windows/Flutter/GeneratedPluginRegistrant.*
+
+# Web related
+**/web/ServiceWorker/
+**/web/flutter_service_worker.js
+
+# IntelliJ related
+.idea/
+*.iml
+*.ipr
+*.iws
+.out/
+
+# VSCode related
+.vscode/
+
+# Visual Studio related
+**/Visual Studio 2015/Backup Files/
+*.ncb
+*.sdf
+*.suo
+*.user
+ipch/
+*.dbmdl
+
+# Environment files
+.env

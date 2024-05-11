@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, must_be_immutable, sized_box_for_whitespace, use_key_in_widget_constructors, no_logic_in_create_state, library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:pacer/constants.dart';
 import 'package:pacer/widgets/drawer.dart';
@@ -129,7 +130,7 @@ class _MainScreenState extends State<MainScreen>
                               'Calories: ${calories.toStringAsFixed(1)} kcal\n'
                               'Distance: ${distance.toStringAsFixed(1)} m\n'
                               'Average Calories: ${avgCal.toStringAsFixed(1)} kcal\n\n'
-                              'Calculate your progress on Pacer: ${AppStrings.appLink}';
+                              'Calculate your progress on Pacer: ${dotenv.get('APP_LINK')}';
 
                           Share.share(message);
                         },

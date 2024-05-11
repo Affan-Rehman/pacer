@@ -3,6 +3,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:pacer/constants.dart';
 
@@ -39,7 +40,7 @@ class _WeatherWidgetState extends State<WeatherWidget> {
       {
         'lat': '${position.latitude}',
         'lon': '${position.longitude}',
-        'appid': AppStrings.openWeatherMapsApi,
+        'appid': dotenv.get('OPEN_WEATHER_MAPS_APP_ID'),
       },
     );
 

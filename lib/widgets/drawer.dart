@@ -3,6 +3,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -78,7 +79,7 @@ class MyNavigationDrawer extends StatelessWidget {
                     fontWeight: FontWeight.bold),
               ),
               onTap: () {
-                String playStoreLink = AppStrings.appLink;
+                String playStoreLink = dotenv.get('APP_LINK');
                 String yourShareText = 'Share App: $playStoreLink';
 
                 Share.share(
@@ -113,7 +114,7 @@ class MyNavigationDrawer extends StatelessWidget {
                     fontWeight: FontWeight.bold),
               ),
               onTap: () {
-                launch(AppStrings.appLink);
+                launch(dotenv.get('APP_LINK'));
               },
             ),
             ListTile(
@@ -143,7 +144,7 @@ class MyNavigationDrawer extends StatelessWidget {
                 help(context, currentItem);
               },
             ),
-                      ListTile(
+            ListTile(
               leading: Icon(Icons.logout, color: Colors.white),
               title: Text(
                 translatedStrings[currentLanguage]!['logout'] ??

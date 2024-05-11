@@ -1,6 +1,7 @@
 // ignore_for_file: use_full_hex_values_for_flutter_colors, constant_identifier_names
 
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class AppColors {
   static const Color colorPrimary = Color(0xFF163B5F);
@@ -47,13 +48,14 @@ class AppColors {
 
 class AppStrings {
   static const String water = "water";
-  static const String googleMapsApi = "AIzaSyDu-D_IqxGn7dh2CHqJTz-Ew5dCfbTvKzs";
-  static const String openWeatherMapsApi = "15fc9acc84fcb84e6a803f36bce61a5a";
+  String googleMapsApi = dotenv.get('GOOGLE_MAPS_API');
+  String openWeatherMapsAppId = dotenv.get('OPEN_WEATHER_MAPS_APP_ID');
+  String appLink = dotenv.get('APP_LINK');
+  String admobAppId = dotenv.get('ADMOB_APP_ID');
+  String openWeatherMapsApi = dotenv.get('OPEN_WEATHER_MAPS_API');
   static const String appName = "Pacer";
   static const String appNamePacerBelowIcon = "Pacer";
-  static const String openWeatherMapsAppId = "4c793cb19b60aaba128033617e6c1187";
-  static const String appLink = "https://bit.ly/31D06BE";
-  static const String admobAppID = "ca-app-pub-5238824914705486~7105277286";
+
   static const String sotwNorth = "N";
   static const String sotwEast = "E";
   static const String sotwSouth = "S";
