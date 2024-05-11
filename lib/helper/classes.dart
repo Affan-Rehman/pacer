@@ -14,18 +14,19 @@ class Hour {
     required this.distance,
   });
 }
+
 class Daily {
   List<Hour> hourList;
   int steps;
   double calories;
   double distance;
   double avgCal = 0;
-  String day; // Change the type to String
+  String day;
 
   Daily({
     required this.hourList,
     required this.day,
-  })   : steps = 0,
+  })  : steps = 0,
         calories = 0.0,
         distance = 0.0 {
     _calculateSteps();
@@ -50,6 +51,7 @@ class Daily {
     avgCal = calories / hourList.length;
   }
 }
+
 class Weekly {
   DateTime startDate;
   DateTime endDate;
@@ -102,17 +104,15 @@ class Monthly {
   double distance;
   double avgCal = 0;
   String name;
-  
 
-  Monthly({
-    required this.startDate,
-    required this.endDate,
-    required this.weeklyList,
-    required this.steps,
-    required this.calories,
-    required this.distance,
-    required this.name
-  }) {
+  Monthly(
+      {required this.startDate,
+      required this.endDate,
+      required this.weeklyList,
+      required this.steps,
+      required this.calories,
+      required this.distance,
+      required this.name}) {
     _calculateSteps();
     _calculateCalories();
     _calculateDistance();
@@ -278,14 +278,11 @@ class DayData {
   });
 }
 
-
-
-
- Future<bool> checkIfUserDocExists() async {
-    final auth = FirebaseAuth.instance;
-    final fireStore = FirebaseFirestore.instance;
-    await auth.currentUser!.reload();
-    final userDoc =
-        await fireStore.collection("users").doc(auth.currentUser!.uid).get();
-    return userDoc.exists;
-  }
+Future<bool> checkIfUserDocExists() async {
+  final auth = FirebaseAuth.instance;
+  final fireStore = FirebaseFirestore.instance;
+  await auth.currentUser!.reload();
+  final userDoc =
+      await fireStore.collection("users").doc(auth.currentUser!.uid).get();
+  return userDoc.exists;
+}

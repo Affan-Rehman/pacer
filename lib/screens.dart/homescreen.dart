@@ -15,7 +15,7 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:pacer/constants.dart';
 import 'package:uuid/uuid.dart';
 import '../helper/classes.dart';
-import '../helper/dialog.dart';
+import '../widgets/dialog.dart';
 import 'mainscreen.dart';
 
 var uuid = const Uuid();

@@ -13,7 +13,7 @@ import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../constants.dart';
-import 'classes.dart';
+import '../helper/classes.dart';
 
 class NoLoginDialog extends StatelessWidget {
   final Function onPressed;

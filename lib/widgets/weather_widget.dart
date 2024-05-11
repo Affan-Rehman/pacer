@@ -1,75 +1,12 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, must_be_immutable, use_key_in_widget_constructors, prefer_interpolation_to_compose_strings, unnecessary_null_comparison, library_private_types_in_public_api, prefer_const_constructors_in_immutables, non_constant_identifier_names
-
-import 'package:flutter/material.dart';
-import 'package:flutter_compass/flutter_compass.dart';
-import 'dart:async';
-import 'dart:math' as math;
-import 'package:alxgration_speedometer/speedometer.dart';
-import 'package:geolocator/geolocator.dart';
-
-import '../constants.dart';
+// ignore_for_file: non_constant_identifier_names, library_private_types_in_public_api, prefer_const_constructors_in_immutables, use_key_in_widget_constructors
 
 import 'dart:convert';
+
+import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:pacer/constants.dart';
+
 import 'package:http/http.dart' as http;
-
-class BlinkingWidget extends StatefulWidget {
-  final bool isBelowRequirement;
-  final Widget child;
-
-  BlinkingWidget({required this.isBelowRequirement, required this.child});
-
-  @override
-  _BlinkingWidgetState createState() => _BlinkingWidgetState();
-}
-
-class _BlinkingWidgetState extends State<BlinkingWidget>
-    with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 500),
-    )..addStatusListener((status) {
-        if (status == AnimationStatus.completed) {
-          _controller.reverse();
-        } else if (status == AnimationStatus.dismissed) {
-          _controller.forward();
-        }
-      });
-    _controller.forward();
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: _controller,
-      builder: (context, child) {
-        return widget.isBelowRequirement
-            ? ColorFiltered(
-                colorFilter: ColorFilter.mode(
-                  (_controller.value > 0.5)
-                      ? Colors.red.withOpacity(0.8)
-                      : Colors.white.withOpacity(0.8),
-                  BlendMode.modulate,
-                ),
-                child: widget.child,
-              )
-            : widget.child;
-      },
-    );
-  }
-}
-
-
 
 class WeatherWidget extends StatefulWidget {
   final String? currentLanguage;
@@ -159,7 +96,7 @@ class _WeatherWidgetState extends State<WeatherWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(20),
+      padding: const EdgeInsets.all(20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
@@ -174,20 +111,19 @@ class _WeatherWidgetState extends State<WeatherWidget> {
                     weatherIcon,
                     color: Colors.white,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 3,
                   ),
                   Text('$temp°C',
-                      style: TextStyle(
+                      style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
                           fontSize: 17)),
                 ],
               ),
               Text(
-                  translatedStrings[widget.currentLanguage!]!['humidity']! +
-                      ": $humidity",
-                  style: TextStyle(color: Colors.white, fontSize: 12)),
+                  "${translatedStrings[widget.currentLanguage!]!['humidity']!}: $humidity",
+                  style: const TextStyle(color: Colors.white, fontSize: 12)),
             ],
           ),
           Column(
@@ -195,85 +131,20 @@ class _WeatherWidgetState extends State<WeatherWidget> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(time,
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
                       fontSize: 17)),
               Text(
-                  translatedStrings[widget.currentLanguage!]!['sunrise']! +
-                      ": $sunrise",
-                  style: TextStyle(color: Colors.white, fontSize: 12)),
+                  "${translatedStrings[widget.currentLanguage!]!['sunrise']!}: $sunrise",
+                  style: const TextStyle(color: Colors.white, fontSize: 12)),
               Text(
-                  translatedStrings[widget.currentLanguage!]!['sunset']! +
-                      ": $sunset",
-                  style: TextStyle(color: Colors.white, fontSize: 12)),
+                  "${translatedStrings[widget.currentLanguage!]!['sunset']!}: $sunset",
+                  style: const TextStyle(color: Colors.white, fontSize: 12)),
             ],
           ),
         ],
       ),
-    );
-  }
-}
-
-class CompassWidget extends StatefulWidget {
-  @override
-  _CompassWidgetState createState() => _CompassWidgetState();
-}
-
-class _CompassWidgetState extends State<CompassWidget> {
-  double? _direction;
-  StreamSubscription<CompassEvent>? _compassSubscription;
-
-  @override
-  void initState() {
-    super.initState();
-    _listenDirection();
-  }
-
-  // Function to start listening to changes in direction
-  void _listenDirection() {
-    _compassSubscription = FlutterCompass.events!.listen((CompassEvent data) {
-      setState(() {
-        _direction = data.heading;
-      });
-    });
-  }
-
-  @override
-  void dispose() {
-    _compassSubscription?.cancel(); // Cancel the subscription
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return _direction != null
-        ? Transform.rotate(
-            angle: ((_direction ?? 0) * (math.pi / 180) * -1),
-            child: Image.asset('assets/drawable/compass.png'),
-          )
-        : Center(
-            child: CircularProgressIndicator(),
-          );
-  }
-}
-
-class SpeedometerWidget extends StatelessWidget {
-  final double speed;
-
-  SpeedometerWidget({Key? key, required this.speed}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    int speedValue = speed.toInt();
-
-    return Speedometer(
-      minValue: 0,
-      maxValue: 200,
-      currentValue: speedValue,
-      pointerColor: Colors.white,
-      barColor: AppColors.colorPrimaryDark,
-      displayText: 'km/h',
     );
   }
 }

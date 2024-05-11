@@ -7,7 +7,7 @@ import 'package:pacer/helper/stepcalculator.dart';
 import '../constants.dart';
 import '../helper/classes.dart';
 import 'package:intl/intl.dart';
-import '../helper/graphs.dart';
+import '../widgets/graphs.dart';
 
 class HistoryScreen extends StatefulWidget {
   HistoryScreen(this.currentLanguage);

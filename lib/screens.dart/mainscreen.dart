@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:pacer/constants.dart';
-import 'package:pacer/drawer.dart';
+import 'package:pacer/widgets/drawer.dart';
 import 'package:pacer/screens.dart/goalscreen.dart';
 import 'package:pacer/screens.dart/historyscreen.dart';
 import 'package:pacer/screens.dart/performancescreen.dart';

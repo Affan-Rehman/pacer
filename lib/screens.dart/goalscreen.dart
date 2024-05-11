@@ -6,7 +6,7 @@ import 'package:hive/hive.dart';
 import 'package:pacer/constants.dart';
 import 'package:blurrycontainer/blurrycontainer.dart';
 import '../helper/classes.dart';
-import '../helper/graphs.dart';
+import '../widgets/graphs.dart';
 
 class GoalScreen extends StatefulWidget {
   final String currentLanguage;

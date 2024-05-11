@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -6,14 +8,17 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:hive/hive.dart';
 import 'package:pacer/helper/adapters.dart';
 import 'package:pacer/helper/classes.dart';
-import 'package:pacer/helper/widgets.dart';
+import 'package:pacer/widgets/compass.dart';
 import 'package:pacer/screens.dart/goalscreen.dart';
 import 'package:pacer/screens.dart/historyscreen.dart';
 import 'package:pacer/screens.dart/homescreen.dart';
 import 'package:pacer/screens.dart/wateractivity.dart';
 import 'package:pacer/screens.dart/widgetscreen.dart';
+import 'package:pacer/widgets/speedometer.dart';
+import 'package:pacer/widgets/weather_widget.dart';
 
 Future<void> main() async {
+  //
   //necessary binding
   TestWidgetsFlutterBinding.ensureInitialized();
   final temp = await Directory.systemTemp.createTemp();
@@ -82,4 +87,6 @@ Future<void> main() async {
     expect(find.byType(DraggableGlass), findsOneWidget);
     expect(find.byType(DragTarget), findsOneWidget);
   });
+
+  print('--> System Test Passed Successfully!');
 }

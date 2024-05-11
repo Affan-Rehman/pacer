@@ -9,12 +9,13 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:hive/hive.dart';
 import 'package:pacer/screens.dart/wateractivity.dart';
+import 'package:pacer/widgets/blinking_widget.dart';
 import 'package:pedometer/pedometer.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
 import '../constants.dart';
 import '../helper/classes.dart';
-import '../helper/widgets.dart';
+import '../widgets/compass.dart';
 import 'homescreen.dart';
 
 class PerformanceScreen extends StatefulWidget {

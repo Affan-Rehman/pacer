@@ -6,7 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:pacer/constants.dart';
-import 'package:pacer/helper/widgets.dart';
+import 'package:pacer/widgets/compass.dart';
+import 'package:pacer/widgets/speedometer.dart';
+import 'package:pacer/widgets/weather_widget.dart';
 
 class WidgetsScreen extends StatefulWidget {
   final String currentLanguage;

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 import '../constants.dart';
-import 'classes.dart';
+import '../helper/classes.dart';
 
 // ignore_for_file:
 String selectedData = 'steps';
